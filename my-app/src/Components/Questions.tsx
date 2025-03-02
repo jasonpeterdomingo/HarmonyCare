@@ -1,6 +1,7 @@
 import { FormWrapper } from "./FormWrapper";
 import "./Questions.css";
 //import bkgd1 from "../assets/bkgd1.png";
+// import bkgd2 from "../assets/bkgd2.png"; // Import background image 2
 
 type QuestionsFields = {
   firstName: string;
@@ -12,6 +13,7 @@ type QuestionsFields = {
   age: string;
   gender: string;
   language: string;
+  specialist: string; // Add specialist field
 };
 
 type QuestionsProps = QuestionsFields & {
@@ -81,27 +83,36 @@ export function ZipPage({ zip, updateFields }: QuestionsProps) {
   );
 }
 
-export function UserName({
-  firstName,
-  lastName,
-  updateFields,
-}: QuestionsProps) {
+export function Specialists({ specialist, updateFields }: QuestionsProps) {
+  const specialistOptions = [
+    "Cardiologist",
+    "Dermatologist",
+    "Pediatrician",
+    "Orthopedic Surgeon",
+    "Psychiatrist",
+    "General Practitioner",
+  ];
+
   return (
-    <FormWrapper title="Doctor Name">
-      <label>First Name</label>
-      <input
-        autoFocus
-        type="text"
-        value={firstName}
-        onChange={(e) => updateFields({ firstName: e.target.value })}
-      />
-      <label>Last Name</label>
-      <input
-        type="text"
-        value={lastName}
-        onChange={(e) => updateFields({ lastName: e.target.value })}
-      />
-    </FormWrapper>
+    <div className="specialistsBackground">
+      <h2 className="normalText">What health specialist do you need?</h2>
+      <div className="dropdownContainer">
+        <select
+          value={specialist}
+          onChange={(e) => updateFields({ specialist: e.target.value })}
+          className="dropdown"
+        >
+          <option value="" disabled>
+            Select a specialist
+          </option>
+          {specialistOptions.map((option) => (
+            <option key={option} value={option}>
+              {option}
+            </option>
+          ))}
+        </select>
+      </div>
+    </div>
   );
 }
 

@@ -8,8 +8,8 @@ import {
   WelcomeMessage,
   AddressForm,
   DoctorPersonalInfo,
-  UserName,
   ZipPage,
+  Specialists,
 } from "./Components/Questions";
 
 type FormData = {
@@ -22,6 +22,7 @@ type FormData = {
   age: string;
   gender: string;
   language: string;
+  specialist: string;
 };
 
 const INITIAL_DATA: FormData = {
@@ -34,6 +35,7 @@ const INITIAL_DATA: FormData = {
   age: "",
   gender: "",
   language: "",
+  specialist: "",
 };
 
 function App() {
@@ -57,7 +59,7 @@ function App() {
         }}
       />,
       <ZipPage {...data} updateFields={updateFields} />,
-      <UserName {...data} updateFields={updateFields} />,
+      <Specialists {...data} updateFields={updateFields} />,
       <AddressForm {...data} updateFields={updateFields} />,
       <DoctorPersonalInfo {...data} updateFields={updateFields} />,
     ]); //each form takes in info
