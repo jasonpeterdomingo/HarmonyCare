@@ -14,6 +14,7 @@ type QuestionsFields = {
   gender: string;
   language: string;
   specialist: string; // Add specialist field
+  insurance: string; // Add insurance field
 };
 
 type QuestionsProps = QuestionsFields & {
@@ -98,6 +99,7 @@ export function Specialists({ specialist, updateFields }: QuestionsProps) {
       <h2 className="normalText">What health specialist do you need?</h2>
       <div className="dropdownContainer">
         <select
+          required
           value={specialist}
           onChange={(e) => updateFields({ specialist: e.target.value })}
           className="dropdown"
@@ -116,37 +118,37 @@ export function Specialists({ specialist, updateFields }: QuestionsProps) {
   );
 }
 
-export function AddressForm({
-  street,
-  city,
-  state,
-  updateFields,
-}: QuestionsProps) {
+export function Insurance({ insurance, updateFields }: QuestionsProps) {
+  const insuranceOptions = [
+    "Blue Cross Blue Shield",
+    "UnitedHealthcare",
+    "Humana",
+    "Anthem",
+    "MediCare",
+    "MediCal",
+  ];
+
   return (
-    <FormWrapper title="Doctor's Office Address">
-      <label>Street</label>
-      <input
-        autoFocus
-        required
-        type="text"
-        value={street}
-        onChange={(e) => updateFields({ street: e.target.value })}
-      />
-      <label>City</label>
-      <input
-        required
-        type="text"
-        value={city}
-        onChange={(e) => updateFields({ city: e.target.value })}
-      />
-      <label>State</label>
-      <input
-        required
-        type="text"
-        value={state}
-        onChange={(e) => updateFields({ state: e.target.value })}
-      />
-    </FormWrapper>
+    <div className="specialistsBackground">
+      <h2 className="normalText">What type of insurance do you have?</h2>
+      <div className="dropdownContainer">
+        <select
+          required
+          value={insurance}
+          onChange={(e) => updateFields({ insurance: e.target.value })}
+          className="dropdown"
+        >
+          <option value="" disabled>
+            Select an insurance
+          </option>
+          {insuranceOptions.map((option) => (
+            <option key={option} value={option}>
+              {option}
+            </option>
+          ))}
+        </select>
+      </div>
+    </div>
   );
 }
 

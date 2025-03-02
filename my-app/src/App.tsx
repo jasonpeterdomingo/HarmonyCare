@@ -6,10 +6,10 @@ import backArrow from "./assets/arrow-left.png";
 
 import {
   WelcomeMessage,
-  AddressForm,
   DoctorPersonalInfo,
   ZipPage,
   Specialists,
+  Insurance,
 } from "./Components/Questions";
 
 type FormData = {
@@ -23,6 +23,7 @@ type FormData = {
   gender: string;
   language: string;
   specialist: string;
+  insurance: string;
 };
 
 const INITIAL_DATA: FormData = {
@@ -36,6 +37,7 @@ const INITIAL_DATA: FormData = {
   gender: "",
   language: "",
   specialist: "",
+  insurance: "",
 };
 
 function App() {
@@ -60,7 +62,7 @@ function App() {
       />,
       <ZipPage {...data} updateFields={updateFields} />,
       <Specialists {...data} updateFields={updateFields} />,
-      <AddressForm {...data} updateFields={updateFields} />,
+      <Insurance {...data} updateFields={updateFields} />,
       <DoctorPersonalInfo {...data} updateFields={updateFields} />,
     ]); //each form takes in info
 
