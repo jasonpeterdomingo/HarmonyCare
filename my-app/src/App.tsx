@@ -11,6 +11,7 @@ import {
   Specialists,
   Insurance,
 } from "./Components/Questions";
+import DoctorList from "./Components/SearchResults";
 
 type FormData = {
   firstName: string;
@@ -68,13 +69,14 @@ function App() {
         updateFields={updateFields}
         language={language}
       />,
+      <DoctorList></DoctorList>,
     ]); //each form takes in info
 
   //handle button submission between pages
   function onSubmit(e: FormEvent) {
     e.preventDefault(); //prevents page from doing an automatic refresh/total form submit option
-    if (!isLastStep) return next(); // only go to next page if we aren't on last page
-    alert("Successful Submission of Form"); //what to do if the finish button is clicked
+    if (currentStepIndex < steps.length - 1) return next(); // only go to next page if we aren't on last page
+    next();
   }
   //other stuff
   return (
@@ -82,7 +84,7 @@ function App() {
       <form onSubmit={onSubmit}>
         {step}
         <div id="CircleButtonContainer">
-          {currentStepIndex >= 1 && (
+          {currentStepIndex >= 1 && !isLastStep && (
             <button
               id="CircleButton"
               className="button"
@@ -92,7 +94,7 @@ function App() {
               <img src={backArrow} alt="Back Button" />
             </button>
           )}
-          {currentStepIndex > 0 && (
+          {currentStepIndex > 0 && !isLastStep && (
             <button id="CircleButton" className="button" type="submit">
               <img src={nextArrow} alt="Next Button" className="buttonImage" />
             </button>
