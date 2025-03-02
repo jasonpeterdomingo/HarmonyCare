@@ -1,5 +1,6 @@
 import { FormWrapper } from "./FormWrapper";
 import "./Questions.css";
+//import bkgd1 from "../assets/bkgd1.png";
 
 type QuestionsFields = {
   firstName: string;
@@ -24,14 +25,15 @@ export function WelcomeMessage({
   setLanguage: (lang: "en" | "es") => void;
 }) {
   return (
-    <FormWrapper title="Home Page">
+    <div>
       <h1 className="welcomeTitle">Hello! Welcome to HarmonyCare!</h1>
-      <span className="welcomeMessage">
+      <span className="welcomeText">
         Please follow along to be matched with a qualified medical professional
         shortly! To begin, please select your preferred language:
       </span>
-      <div className="LanguageButton">
+      <div id="LangButtonContainer">
         <button
+          id="LangButton"
           type="button"
           onClick={() => {
             setLanguage("en");
@@ -40,15 +42,40 @@ export function WelcomeMessage({
           <span className="LangButtonText">English</span>
         </button>
         <button
+          id="LangButton"
           type="button"
           onClick={() => {
             setLanguage("es");
           }}
         >
-          <span className="LangButtonText">Spanish</span>
+          <span className="LangButtonText">Español</span>
         </button>
       </div>
-    </FormWrapper>
+    </div>
+  );
+}
+
+export function ZipPage({ zip, updateFields }: QuestionsProps) {
+  return (
+    <div>
+      <h2 className="normalText">
+        Perfect! Now, please enter your zip code below so that we can find a
+        medical professional in that area:
+      </h2>
+      <div className="zipContainer">
+        <input
+          required
+          type="string"
+          value={zip}
+          onChange={(e) => updateFields({ zip: e.target.value })}
+          pattern="\d{5}"
+          minLength={5}
+          maxLength={5}
+          className="zipInput"
+          placeholder="Enter ZIP Code"
+        />
+      </div>
+    </div>
   );
 }
 
@@ -80,7 +107,6 @@ export function AddressForm({
   street,
   city,
   state,
-  zip,
   updateFields,
 }: QuestionsProps) {
   return (
@@ -106,13 +132,6 @@ export function AddressForm({
         type="text"
         value={state}
         onChange={(e) => updateFields({ state: e.target.value })}
-      />
-      <label>Zip</label>
-      <input
-        required
-        type="text"
-        value={zip}
-        onChange={(e) => updateFields({ zip: e.target.value })}
       />
     </FormWrapper>
   );

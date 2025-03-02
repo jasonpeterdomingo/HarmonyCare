@@ -1,20 +1,87 @@
-.LanguageButton {
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400&family=Kulim+Park:wght@400&display=swap");
+
+#CircleButtonContainer {
+  display: flex; /* ✅ Use Flexbox instead of Grid */
+  justify-content: space-between; /* ✅ Pushes buttons to opposite sides */
+  align-items: center; /* ✅ Centers them vertically */
+  width: 90vw; /* ✅ Adjusts width dynamically based on screen size */
+  max-width: 1200px; /* ✅ Prevents it from being too wide */
+  margin: 0 auto; /* ✅ Centers the container horizontally */
+  padding: 5% 5%; /* ✅ Adds buffer space from edges */
+  position: absolute;
+  bottom: 10%; /* ✅ Keeps buttons at the bottom */
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+#CircleButton {
+  background-color: #b6e1a9;
+  display: flex;
+  width: 100px;
+  height: 100px;
+  border: none;
+  border-radius: 50%;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  object-fit: contain;
+}
+
+.nextButton {
+  background-image: url("../assets/arrow-right.png"); /* ✅ Correct path for CSS */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100vh;
+  width: 100vw;
+}
+
+.backButton {
+  background-image: url("../assets/arrow-right.png"); /* ✅ Correct path for CSS */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100vh;
+  width: 100vw;
+}
+
+.LanguageButtonContainer {
+  display: flex;
+  justify-content: space-between; /* Pushes buttons to opposite sides */
+  align-items: center;
+  width: 100%; /* Ensures it spans the full screen */
+  padding: 0 20px; /* Adds some padding from edges */
+}
+
+#LangButton {
+  padding: "2rem";
+  background-color: #d4e6cc;
   display: flex;
   width: 257px;
   height: 134px;
   padding: 20px;
+  border: none;
+  border-radius: 15px;
   justify-content: center;
   align-items: center;
   gap: 10px;
   flex-shrink: 0;
-  border-radius: 6px;
-  background: #d4e6cc;
+  margin-top: 15%;
+}
+
+#LangButtonContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, auto));
+  grid-template-rows: 600px;
+  row-gap: 20%;
+  column-gap: 40%;
+  justify-content: center;
 }
 
 .LangButtonText {
   color: #000;
   text-align: center;
-  font-family: Manrope;
+  font-family: Manrope, sans-serif;
   font-size: 36px;
   font-style: normal;
   font-weight: 400;
@@ -30,12 +97,17 @@
   background: #f8fff5;
 }
 
-.welcomeMessage {
+.normalText {
+  display: flex; /* Enables centering */
+  justify-content: center; /* Centers horizontally */
+  align-items: center; /* Centers vertically within its container */
   width: 540px;
   height: 195px;
   flex-shrink: 0;
+  padding-top: 20%;
+  margin: 0 auto; /* Centers the element within its parent */
   color: #000;
-  text-align: center;
+  text-align: center; /* Ensures text inside is centered */
   font-family: "Kulim Park";
   font-size: 36px;
   font-style: normal;
@@ -43,22 +115,78 @@
   line-height: normal;
 }
 
+/*Welcome Page*/
 .welcomeTitle {
+  display: flex; /* Enables centering */
+  justify-content: center; /* Centers horizontally */
+  align-items: center; /* Centers vertically within its container */
   width: 724px;
   height: 146px;
   flex-shrink: 0;
+  margin: 0 auto; /* Centers the element within its parent */
   color: #1e1e1e;
-  text-align: center;
+  text-align: center; /* Ensures text inside is centered */
   font-family: "Kulim Park";
   font-size: 64px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+  padding-top: 12%;
 }
 
-.nextButton {
-  width: 100px;
-  height: 100px;
+.welcomeBackground {
+  background-image: url("../assets/bkgd1.png"); /* ✅ Correct path for CSS */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100vh;
+  width: 100vw;
+}
+
+#welcomeContainer {
+  display: flex; /* Enables centering */
+  justify-content: center; /* Centers content horizontally */
+  align-items: center; /* Centers content vertically */
+  margin: 10% 20%; /* 10% margin from the top/bottom, 20% from left/right */
+  text-align: center; /* Ensures text is centered within the element */
+}
+
+.welcomeText {
+  display: flex; /* Enables centering */
+  justify-content: center; /* Centers horizontally */
+  align-items: center; /* Centers vertically within its container */
+  width: 540px;
+  height: 195px;
   flex-shrink: 0;
-  fill: #b6e1a9;
+  margin: 8% auto; /* Centers the element within its parent */
+  color: #000;
+  text-align: center; /* Ensures text inside is centered */
+  font-family: "Kulim Park";
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+/*ZipPage */
+.zipContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 25%;
+}
+
+.zipInput {
+  width: 300px;
+  height: 60px;
+  font-size: 24px;
+  text-align: center;
+  border: 2px solid #000;
+  border-radius: 10px;
+  outline: none;
+}
+
+.zipInput::placeholder {
+  color: gray;
+  font-size: 20px;
 }
