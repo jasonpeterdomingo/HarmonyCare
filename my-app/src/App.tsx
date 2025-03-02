@@ -63,7 +63,11 @@ function App() {
       <ZipPage {...data} updateFields={updateFields} />,
       <Specialists {...data} updateFields={updateFields} />,
       <Insurance {...data} updateFields={updateFields} />,
-      <DoctorPersonalInfo {...data} updateFields={updateFields} />,
+      <DoctorPersonalInfo
+        {...data}
+        updateFields={updateFields}
+        language={language}
+      />,
     ]); //each form takes in info
 
   //handle button submission between pages
