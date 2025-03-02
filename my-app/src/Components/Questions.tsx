@@ -1,4 +1,5 @@
 import { FormWrapper } from "./FormWrapper";
+import "./Questions.css";
 
 type QuestionsFields = {
   firstName: string;
@@ -24,22 +25,19 @@ export function WelcomeMessage({
 }) {
   return (
     <FormWrapper title="Home Page">
-      <p>Hello! Welcome to HarmonyCare!</p>
-      <div
-        style={{
-          marginTop: "1rem",
-          display: "flex",
-          gap: ".5rem",
-          justifyContent: "flex-end",
-        }}
-      >
+      <h1 className="welcomeTitle">Hello! Welcome to HarmonyCare!</h1>
+      <span className="welcomeMessage">
+        Please follow along to be matched with a qualified medical professional
+        shortly! To begin, please select your preferred language:
+      </span>
+      <div className="LanguageButton">
         <button
           type="button"
           onClick={() => {
             setLanguage("en");
           }}
         >
-          English
+          <span className="LangButtonText">English</span>
         </button>
         <button
           type="button"
@@ -47,7 +45,7 @@ export function WelcomeMessage({
             setLanguage("es");
           }}
         >
-          Spanish
+          <span className="LangButtonText">Spanish</span>
         </button>
       </div>
     </FormWrapper>

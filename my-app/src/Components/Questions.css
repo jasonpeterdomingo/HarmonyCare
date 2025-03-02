@@ -1,0 +1,64 @@
+.LanguageButton {
+  display: flex;
+  width: 257px;
+  height: 134px;
+  padding: 20px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+  border-radius: 6px;
+  background: #d4e6cc;
+}
+
+.LangButtonText {
+  color: #000;
+  text-align: center;
+  font-family: Manrope;
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.progressBar {
+  width: 798px;
+  height: 24px;
+  flex-shrink: 0;
+  border-radius: 20px;
+  border: 1px solid #000;
+  background: #f8fff5;
+}
+
+.welcomeMessage {
+  width: 540px;
+  height: 195px;
+  flex-shrink: 0;
+  color: #000;
+  text-align: center;
+  font-family: "Kulim Park";
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.welcomeTitle {
+  width: 724px;
+  height: 146px;
+  flex-shrink: 0;
+  color: #1e1e1e;
+  text-align: center;
+  font-family: "Kulim Park";
+  font-size: 64px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.nextButton {
+  width: 100px;
+  height: 100px;
+  flex-shrink: 0;
+  fill: #b6e1a9;
+}
