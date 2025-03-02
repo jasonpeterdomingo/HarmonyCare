@@ -90,7 +90,7 @@ function App() {
             justifyContent: "flex-end",
           }}
         >
-          {currentStepIndex > 1 && (
+          {currentStepIndex >= 0 && (
             <button type="button" onClick={back}>
               Back
             </button>
