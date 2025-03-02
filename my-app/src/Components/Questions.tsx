@@ -34,6 +34,7 @@ export function WelcomeMessage({
       <div id="LangButtonContainer">
         <button
           id="LangButton"
+          className="button"
           type="button"
           onClick={() => {
             setLanguage("en");
@@ -44,6 +45,7 @@ export function WelcomeMessage({
         <button
           id="LangButton"
           type="button"
+          className="button"
           onClick={() => {
             setLanguage("es");
           }}

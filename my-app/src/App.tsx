@@ -75,12 +75,17 @@ function App() {
         {step}
         <div id="CircleButtonContainer">
           {currentStepIndex >= 1 && (
-            <button id="CircleButton" type="button" onClick={back}>
+            <button
+              id="CircleButton"
+              className="button"
+              type="button"
+              onClick={back}
+            >
               <img src={backArrow} alt="Back Button" />
             </button>
           )}
           {currentStepIndex > 0 && (
-            <button id="CircleButton" type="submit">
+            <button id="CircleButton" className="button" type="submit">
               <img src={nextArrow} alt="Next Button" className="buttonImage" />
             </button>
           )}
