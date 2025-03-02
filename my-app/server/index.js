@@ -7,7 +7,6 @@ const port = 5000;
 // Enable CORS for all requests
 app.use(cors());
 
-// Example endpoint
 app.get('/api/doctors', async (req, res) => {
     const instance = new DBConnection();
     await instance.connect();
@@ -15,14 +14,8 @@ app.get('/api/doctors', async (req, res) => {
     const db = instance.getDB("harmoniCare");
     const doctorsCollection = db.collection("Doctor");
 
-    const doctors = await doctorsCollection.find().toArray();
+    const doctors = (await doctorsCollection.find().toArray()).slice(3,6); // Hardcoded: Manually extract 3 doctors
     console.log(doctors);
-    /*
-  const doctors = [
-    { doctorID: 1, name: 'Dr. John Doe' },
-    { doctorID: 2, name: 'Dr. Jane Smith' },
-  ];
-  */
   res.json(doctors);
 });
 
