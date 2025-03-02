@@ -2,6 +2,7 @@ import React, { FormEvent, useState } from "react";
 import "./App.css";
 import { useMultistepForm } from "./Components/useMultistepForm";
 import {
+  WelcomeMessage,
   AddressForm,
   DoctorPersonalInfo,
   UserName,
@@ -34,6 +35,7 @@ const INITIAL_DATA: FormData = {
 function App() {
   //create the state
   const [data, setData] = useState(INITIAL_DATA); //stores the data in state, so it is saved between button clicks
+  const [language, setLanguage] = useState<"en" | "es" | "">(""); // Store selected language
   //allow fields like name and age to be updated
   //TypeScript allows any fields of a type to be passed in optionally when using Partial<>
   function updateFields(fields: Partial<FormData>) {
@@ -44,6 +46,12 @@ function App() {
   //implement the hook
   const { steps, currentStepIndex, step, isFirstStep, isLastStep, back, next } =
     useMultistepForm([
+      <WelcomeMessage
+        setLanguage={(lang) => {
+          setLanguage(lang);
+          next();
+        }}
+      />,
       <UserName {...data} updateFields={updateFields} />,
       <AddressForm {...data} updateFields={updateFields} />,
       <DoctorPersonalInfo {...data} updateFields={updateFields} />,
@@ -71,7 +79,7 @@ function App() {
     >
       <form onSubmit={onSubmit}>
         <div style={{ position: "absolute", top: ".5rem", right: ".5rem" }}>
-          {currentStepIndex + 1} / {steps.length}
+          {currentStepIndex} / {steps.length - 1}
         </div>
         {step}
         <div
@@ -82,12 +90,14 @@ function App() {
             justifyContent: "flex-end",
           }}
         >
-          {!isFirstStep && (
+          {currentStepIndex > 1 && (
             <button type="button" onClick={back}>
               Back
             </button>
           )}
-          <button type="submit">{isLastStep ? "Finish" : "Next"}</button>
+          {currentStepIndex > 0 && (
+            <button type="submit">{isLastStep ? "Finish" : "Next"}</button>
+          )}
         </div>
       </form>
     </div>

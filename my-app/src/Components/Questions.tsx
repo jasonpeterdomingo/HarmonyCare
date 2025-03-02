@@ -17,6 +17,43 @@ type QuestionsProps = QuestionsFields & {
   updateFields: (fields: Partial<QuestionsFields>) => void; //it is a function that takes in the above and doesn't return anything
 };
 
+export function WelcomeMessage({
+  setLanguage,
+}: {
+  setLanguage: (lang: "en" | "es") => void;
+}) {
+  return (
+    <FormWrapper title="Home Page">
+      <p>Hello! Welcome to HarmonyCare!</p>
+      <div
+        style={{
+          marginTop: "1rem",
+          display: "flex",
+          gap: ".5rem",
+          justifyContent: "flex-end",
+        }}
+      >
+        <button
+          type="button"
+          onClick={() => {
+            setLanguage("en");
+          }}
+        >
+          English
+        </button>
+        <button
+          type="button"
+          onClick={() => {
+            setLanguage("es");
+          }}
+        >
+          Spanish
+        </button>
+      </div>
+    </FormWrapper>
+  );
+}
+
 export function UserName({
   firstName,
   lastName,
@@ -27,14 +64,12 @@ export function UserName({
       <label>First Name</label>
       <input
         autoFocus
-        required
         type="text"
         value={firstName}
         onChange={(e) => updateFields({ firstName: e.target.value })}
       />
       <label>Last Name</label>
       <input
-        required
         type="text"
         value={lastName}
         onChange={(e) => updateFields({ lastName: e.target.value })}
