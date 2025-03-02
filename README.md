@@ -2,7 +2,7 @@
 
 ## Group Members
 
-Jason Domingo
-Ember Kerstetter
-Winnie Li
-Edgardo Royer
+Jason Domingo<br>
+Ember Kerstetter<br>
+Winnie Li<br>
+Edgardo Royer<br>
