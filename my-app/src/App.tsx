@@ -1,11 +1,15 @@
 import React, { FormEvent, useState } from "react";
 import "./App.css";
 import { useMultistepForm } from "./Components/useMultistepForm";
+import nextArrow from "./assets/arrow-right.png";
+import backArrow from "./assets/arrow-left.png";
+
 import {
   WelcomeMessage,
   AddressForm,
   DoctorPersonalInfo,
   UserName,
+  ZipPage,
 } from "./Components/Questions";
 
 type FormData = {
@@ -52,6 +56,7 @@ function App() {
           next();
         }}
       />,
+      <ZipPage {...data} updateFields={updateFields} />,
       <UserName {...data} updateFields={updateFields} />,
       <AddressForm {...data} updateFields={updateFields} />,
       <DoctorPersonalInfo {...data} updateFields={updateFields} />,
@@ -65,38 +70,19 @@ function App() {
   }
   //other stuff
   return (
-    <div
-      style={{
-        position: "relative",
-        background: "white",
-        border: "1px solid black",
-        padding: "2rem",
-        margin: "1rem",
-        borderRadius: ".5rem",
-        fontFamily: "Arial",
-        maxWidth: "max-content",
-      }}
-    >
+    <div className="welcomeBackground">
       <form onSubmit={onSubmit}>
-        <div style={{ position: "absolute", top: ".5rem", right: ".5rem" }}>
-          {currentStepIndex} / {steps.length - 1}
-        </div>
         {step}
-        <div
-          style={{
-            marginTop: "1rem",
-            display: "flex",
-            gap: ".5rem",
-            justifyContent: "flex-end",
-          }}
-        >
-          {currentStepIndex >= 0 && (
-            <button type="button" onClick={back}>
-              Back
+        <div id="CircleButtonContainer">
+          {currentStepIndex >= 1 && (
+            <button id="CircleButton" type="button" onClick={back}>
+              <img src={backArrow} alt="Back Button" />
             </button>
           )}
           {currentStepIndex > 0 && (
-            <button type="submit">{isLastStep ? "Finish" : "Next"}</button>
+            <button id="CircleButton" type="submit">
+              <img src={nextArrow} alt="Next Button" className="buttonImage" />
+            </button>
           )}
         </div>
       </form>
