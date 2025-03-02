@@ -12,6 +12,7 @@
   bottom: 10%; /* ✅ Keeps buttons at the bottom */
   left: 50%;
   transform: translateX(-50%);
+  z-index: 1;
 }
 
 #CircleButton {
@@ -71,10 +72,13 @@
 
 #LangButtonContainer {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, auto));
+  grid-template-columns: repeat(2, minmax(200px, auto));
   grid-template-rows: 600px;
+  justify-content: space-between; /* ✅ Pushes buttons apart */
   row-gap: 20%;
+  width: 80vw;
   column-gap: 40%;
+  max-width: 1200px;
   justify-content: center;
 }
 
@@ -145,7 +149,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-
+  z-index: 0;
   overflow: hidden;
 }
 
@@ -188,6 +192,7 @@
   justify-content: center;
   align-items: center;
   padding-top: 25%;
+  z-index: 10;
 }
 
 .zipInput {
@@ -199,6 +204,8 @@
   border: 2px solid #000;
   border-radius: 10px;
   outline: none;
+  position: relative;
+  z-index: 5;
 }
 
 .zipInput::placeholder {

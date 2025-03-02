@@ -21,7 +21,7 @@ type FormData = {
   zip: string;
   age: string;
   gender: string;
-  language: string;
+  docLanguage: string;
 };
 
 const INITIAL_DATA: FormData = {
@@ -33,7 +33,7 @@ const INITIAL_DATA: FormData = {
   zip: "",
   age: "",
   gender: "",
-  language: "",
+  docLanguage: "",
 };
 
 function App() {
@@ -59,7 +59,11 @@ function App() {
       <ZipPage {...data} updateFields={updateFields} />,
       <UserName {...data} updateFields={updateFields} />,
       <AddressForm {...data} updateFields={updateFields} />,
-      <DoctorPersonalInfo {...data} updateFields={updateFields} />,
+      <DoctorPersonalInfo
+        {...data}
+        updateFields={updateFields}
+        language={language}
+      />,
     ]); //each form takes in info
 
   //handle button submission between pages

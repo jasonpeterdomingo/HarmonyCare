@@ -11,7 +11,7 @@ type QuestionsFields = {
   zip: string;
   age: string;
   gender: string;
-  language: string;
+  docLanguage: string;
 };
 
 type QuestionsProps = QuestionsFields & {
@@ -139,19 +139,38 @@ export function AddressForm({
   );
 }
 
+const translations = {
+  en: {
+    title: "Preferred Doctor Info",
+    age: "Age",
+    gender: "Preferred Gender?",
+    options: ["Male", "Female", "No Preference"],
+  },
+  es: {
+    title: "Información del Médico Preferido",
+    age: "Edad",
+    gender: "¿Género preferido?",
+    options: ["Hombre", "Mujer", "Sin preferencia"],
+  },
+};
+
 export function DoctorPersonalInfo({
   age,
   gender,
   language,
   updateFields,
-}: QuestionsProps) {
+}: QuestionsProps & { language: "en" | "es" | "" }) {
   //checkbox options:
-  const genderOptions = ["Male", "Female", "No Preference"];
+  const t = translations[language as "en" | "es"] || translations["en"];
   //handle checkbox change
 
   return (
-    <FormWrapper title="Prefered Doctor Info">
-      <label>Age</label>
+    <div>
+      <h2 title={t.title} className="normalText">
+        Perfect! Now, please enter your zip code below so that we can find a
+        medical professional in that area:
+      </h2>
+      <label>{t.age}</label>
       <input
         autoFocus
         required
@@ -160,8 +179,8 @@ export function DoctorPersonalInfo({
         value={age}
         onChange={(e) => updateFields({ age: e.target.value })}
       />
-      <label>Prefered Gender??</label>
-      {genderOptions.map((option) => (
+      <label>{t.gender}</label>
+      {t.options.map((option) => (
         <div key={option}>
           <input
             required
@@ -179,8 +198,8 @@ export function DoctorPersonalInfo({
         required
         type="text"
         value={language}
-        onChange={(e) => updateFields({ language: e.target.value })}
+        onChange={(e) => updateFields({ docLanguage: e.target.value })}
       />
-    </FormWrapper>
+    </div>
   );
 }
