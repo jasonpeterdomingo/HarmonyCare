@@ -1,4 +1,4 @@
-// /pages/api/doctor.js
+/* ChatGPT generated */
 import DBConnection from '../../server/connect.cjs';
 
 export default async function handler(req, res) {

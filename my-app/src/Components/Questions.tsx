@@ -1,6 +1,7 @@
 import { FormWrapper } from "./FormWrapper";
 import "./Questions.css";
 //import bkgd1 from "../assets/bkgd1.png";
+// import bkgd2 from "../assets/bkgd2.png"; // Import background image 2
 
 type QuestionsFields = {
   firstName: string;
@@ -11,7 +12,9 @@ type QuestionsFields = {
   zip: string;
   age: string;
   gender: string;
-  docLanguage: string;
+  language: string;
+  specialist: string; // Add specialist field
+  insurance: string; // Add insurance field
 };
 
 type QuestionsProps = QuestionsFields & {
@@ -81,61 +84,71 @@ export function ZipPage({ zip, updateFields }: QuestionsProps) {
   );
 }
 
-export function UserName({
-  firstName,
-  lastName,
-  updateFields,
-}: QuestionsProps) {
+export function Specialists({ specialist, updateFields }: QuestionsProps) {
+  const specialistOptions = [
+    "Cardiologist",
+    "Dermatologist",
+    "Pediatrician",
+    "Orthopedic Surgeon",
+    "Psychiatrist",
+    "General Practitioner",
+  ];
+
   return (
-    <FormWrapper title="Doctor Name">
-      <label>First Name</label>
-      <input
-        autoFocus
-        type="text"
-        value={firstName}
-        onChange={(e) => updateFields({ firstName: e.target.value })}
-      />
-      <label>Last Name</label>
-      <input
-        type="text"
-        value={lastName}
-        onChange={(e) => updateFields({ lastName: e.target.value })}
-      />
-    </FormWrapper>
+    <div className="specialistsBackground">
+      <h2 className="normalText">What health specialist do you need?</h2>
+      <div className="dropdownContainer">
+        <select
+          required
+          value={specialist}
+          onChange={(e) => updateFields({ specialist: e.target.value })}
+          className="dropdown"
+        >
+          <option value="" disabled>
+            Select a specialist
+          </option>
+          {specialistOptions.map((option) => (
+            <option key={option} value={option}>
+              {option}
+            </option>
+          ))}
+        </select>
+      </div>
+    </div>
   );
 }
 
-export function AddressForm({
-  street,
-  city,
-  state,
-  updateFields,
-}: QuestionsProps) {
+export function Insurance({ insurance, updateFields }: QuestionsProps) {
+  const insuranceOptions = [
+    "Blue Cross Blue Shield",
+    "UnitedHealthcare",
+    "Humana",
+    "Anthem",
+    "MediCare",
+    "MediCal",
+  ];
+
   return (
-    <FormWrapper title="Doctor's Office Address">
-      <label>Street</label>
-      <input
-        autoFocus
-        required
-        type="text"
-        value={street}
-        onChange={(e) => updateFields({ street: e.target.value })}
-      />
-      <label>City</label>
-      <input
-        required
-        type="text"
-        value={city}
-        onChange={(e) => updateFields({ city: e.target.value })}
-      />
-      <label>State</label>
-      <input
-        required
-        type="text"
-        value={state}
-        onChange={(e) => updateFields({ state: e.target.value })}
-      />
-    </FormWrapper>
+    <div className="specialistsBackground">
+      <h2 className="normalText">What type of insurance do you have?</h2>
+      <div className="dropdownContainer">
+        <select
+          required
+          value={insurance}
+          onChange={(e) => updateFields({ insurance: e.target.value })}
+          className="dropdown"
+        >
+          <option value="" disabled>
+            Select an insurance
+          </option>
+          {insuranceOptions.map((option) => (
+            <option key={option} value={option}>
+              {option}
+            </option>
+          ))}
+        </select>
+      </div>
+    </div>
   );
 }
 
@@ -198,7 +211,7 @@ export function DoctorPersonalInfo({
         required
         type="text"
         value={language}
-        onChange={(e) => updateFields({ docLanguage: e.target.value })}
+        onChange={(e) => updateFields({ language: e.target.value })}
       />
     </div>
   );

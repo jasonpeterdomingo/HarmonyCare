@@ -1,9 +1,6 @@
-
-//import { FormWrapper } from "./FormWrapper";
-//import DBConnection from '../server/connect.cjs';
-
-// /src/Components/DoctorList.tsx
 import { useState, useEffect } from 'react';
+import { FormWrapper } from "./FormWrapper";
+import "./SearchResults.css";
 
 const DoctorList = () => {
     const [doctors, setDoctors] = useState<any[]>([]); // State to store the fetched doctors data
@@ -16,62 +13,35 @@ const DoctorList = () => {
                 console.log('Fetched doctors:', data);  // Log the response data
                 setDoctors(data);  // Set the doctors data into state
             })
-            .catch(error => console.error('Error fetching doctors:', error));  // Handle errors
+            .catch(error => console.error('Error fetching doctors:', error)); 
     }, []);
 
     return (
-        <div>
+      <FormWrapper title="Well done! Here are doctors in your area that are ready and able to meet your medical needs:">
+        <div className="doctor-cards">
             {doctors.length > 0 ? (
                 doctors.map((doctor, index) => (
                     <div key={index}>
-                        <p>{doctor.firstName}</p>  
-                        <p>Doctor ID: {doctor.doctorID}</p>
+                        <p>Dr. {doctor.firstName} {doctor.lastName}</p>  
+                        <p>Specializations: {doctor.specializes.join(", ")}</p>
+                        <p>Age: {doctor.age} </p>
+                        <p>Sex: {doctor.sex} </p>
+                        <p>Address: {doctor.address}</p>
+                        <p>Phone: {doctor.phone}</p>
+                        <p>Email: {doctor.email}</p>
+                        <p>Website: {doctor.websites}</p>
+                        <p>Rating: {doctor.rating}/5</p>
+                        <p>Lanuages: {doctor.spokenLanuages.join(", ")}</p>
                     </div>
                 ))
             ) : (
                 <p>No doctors found.</p> 
             )}
         </div>
+
+        <button className="return-button">Return to start</button>
+        </FormWrapper>
     );
 };
 
 export default DoctorList;
-
-
-//export function SearchResults() {
-  
-  /*
-  const client = new DBConnection();
-
-  async function someFunction() {
-      try {
-          await client.connect();
-          const db = client.getDB('myDatabase');
-          console.log("Database connected:", db);
-      } catch (error) {
-          console.error("Error:", error);
-      }
-  }
-  someFunction()
-  */
-
-  /*
-  return (
-    <FormWrapper title="Home Page">
-      <p>Hello! Welcome to HarmonyCare!</p>
-      <label>Last Name</label>
-      <div
-        style={{
-          marginTop: "1rem",
-          display: "flex",
-          gap: ".5rem",
-          justifyContent: "flex-end",
-        }}
-      >
-      </div>
-      <input required type="text" />
-    </FormWrapper>
-  );
-}
-
-*/
