@@ -91,6 +91,10 @@ export function DoctorPersonalInfo({
   language,
   updateFields,
 }: QuestionsProps) {
+  //checkbox options:
+  const genderOptions = ["Male", "Female", "No Preference"];
+  //handle checkbox change
+
   return (
     <FormWrapper title="Prefered Doctor Info">
       <label>Age</label>
@@ -103,12 +107,19 @@ export function DoctorPersonalInfo({
         onChange={(e) => updateFields({ age: e.target.value })}
       />
       <label>Prefered Gender??</label>
-      <input
-        required
-        type="checkbox"
-        value={gender}
-        onChange={(e) => updateFields({ gender: e.target.value })}
-      />
+      {genderOptions.map((option) => (
+        <div key={option}>
+          <input
+            required
+            type="radio"
+            name="gender"
+            value={option}
+            checked={gender === option}
+            onChange={(e) => updateFields({ gender: e.target.value })}
+          />
+          <label>{option}</label>
+        </div>
+      ))}
       <label>Preferred Language</label>
       <input
         required
