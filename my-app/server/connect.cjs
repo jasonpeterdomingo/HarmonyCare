@@ -62,12 +62,14 @@ async function main(){
     const client = await instance.connect();
 
     const db = instance.getDB("harmoniCare");
-    //const doctorsCollection = db.collection("Doctor"); 
+    const doctorsCollection = db.collection("Doctor"); 
 
     //console.log(`Document inserted with _id: ${result.insertedId}`);
-    populateDB();
+    //populateDB();
 
     //instance.dropDB("harmoniCare"); // Uncomment to drop database
+    const data = await doctorsCollection.find().toArray();
+    console.log("!",data)
 
 }
 
@@ -160,3 +162,5 @@ async function populateDB() {
 }
 
 main()
+
+module.exports = DBConnection;
